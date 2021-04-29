@@ -101,6 +101,7 @@ public class Game {
 				}
 				System.out.println(" ");
 			}
+			incorrect = 0;
 			System.out.println("Where do you want to enter number? Row:");
 			int r = input.nextInt();
 			r = r-1;
@@ -133,7 +134,7 @@ public class Game {
 				} else if (r<3 && r>=0 && c<6 && c>=3) {
 					for (i=0; i<3; i++) {
 						for (j=3; j<6; j++) {
-							if (miniGrid1[i][j] == number) {
+							if (miniGrid2[i][j] == number) {
 								incorrect = 1;
 							}
 						}
@@ -141,7 +142,7 @@ public class Game {
 				}else if (r<3 && r>=0 && c<9 && c>=6) {
 					for (i=0; i<3; i++) {
 						for (j=6; j<9; j++) {
-							if (miniGrid1[i][j] == number) {
+							if (miniGrid3[i][j] == number) {
 								incorrect = 1;
 							}
 						}
@@ -149,7 +150,7 @@ public class Game {
 				}else if (r<6 && r>=3 && c<3 && c>=0) {
 					for (i=3; i<6; i++) {
 						for (j=0; j<3; j++) {
-							if (miniGrid1[i][j] == number) {
+							if (miniGrid4[i][j] == number) {
 								incorrect = 1;
 							}
 						}
@@ -157,7 +158,7 @@ public class Game {
 				} else if (r<6 && r>=3 && c<6 && c>=3) {
 					for (i=3; i<6; i++) {
 						for (j=3; j<6; j++) {
-							if (miniGrid1[i][j] == number) {
+							if (miniGrid5[i][j] == number) {
 								incorrect = 1;
 							}
 						}
@@ -165,7 +166,7 @@ public class Game {
 				}else if (r<6 && r>=3 && c<9 && c>=6) {
 					for (i=3; i<6; i++) {
 						for (j=6; j<9; j++) {
-							if (miniGrid1[i][j] == number) {
+							if (miniGrid6[i][j] == number) {
 								incorrect = 1;
 							}
 						}
@@ -173,7 +174,7 @@ public class Game {
 				} else if (r<9 && r>=6 && c<3 && c>=0) {
 					for (i=6; i<9; i++) {
 						for (j=0; j<3; j++) {
-							if (miniGrid1[i][j] == number) {
+							if (miniGrid7[i][j] == number) {
 								incorrect = 1;
 							}
 						}
@@ -181,7 +182,7 @@ public class Game {
 				} else if (r<9 && r>=6 && c<3 && c>=0) {
 					for (i=6; i<9; i++) {
 						for (j=3; j<6; j++) {
-							if (miniGrid1[i][j] == number) {
+							if (miniGrid8[i][j] == number) {
 								incorrect = 1;
 							}
 						}
@@ -189,7 +190,7 @@ public class Game {
 				} else if (r<9 && r>=6 && c<3 && c>=0) {
 					for (i=6; i<9; i++) {
 						for (j=6; j<9; j++) {
-							if (miniGrid1[i][j] == number) {
+							if (miniGrid9[i][j] == number) {
 								incorrect = 1;
 							}
 						}
