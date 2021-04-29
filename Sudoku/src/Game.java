@@ -1,6 +1,10 @@
 import java.util.Scanner; //Import the Scanner class
 
 public class Game {
+	
+	/**
+	 * The main method.
+	 */
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		int [] [] grid = { 
