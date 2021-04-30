@@ -40,37 +40,29 @@ public class Game {
 				{3, 1, 9, 5, 6, 8, 4, 2, 7},
 				{7, 8, 6, 3, 4, 2, 9, 1, 5},
 				{4, 5, 2, 1, 9, 7, 6, 8, 3} };
-		int [][] miniGrid0 = new int [3][3];
-		int [][] miniGrid1 = new int [3][3];
-		int [][] miniGrid2 = new int [3][3];
-		int [][] miniGrid3 = new int [3][3];
-		int [][] miniGrid4 = new int [3][3];
-		int [][] miniGrid5 = new int [3][3];
-		int [][] miniGrid6 = new int [3][3];
-		int [][] miniGrid7 = new int [3][3];
-		int [][] miniGrid8 = new int [3][3];
-		
+
+		int [][][] miniGrids = new int [9][3][3];
 		
 		for (i=0; i<9; i++) {
 			for (j=0; j<9; j++) {
 				if (i<3 && j<3) {
-					miniGrid0 [i][j] = grid[i][j];
+					miniGrids [0][i][j] = grid[i][j];
 				} else if (i<3 && j>=3 && j<6) {
-					miniGrid1 [i][j-3] = grid[i][j];
+					miniGrids [1][i][j-3] = grid[i][j];
 				} else if (i<3 && j>=6) {
-					miniGrid2 [i][j-6] = grid[i][j];
+					miniGrids [2][i][j-6] = grid[i][j];
 				} else if (i>=3 && i<6 && j<3) {
-					miniGrid3 [i-3][j] = grid[i][j];
+					miniGrids [3][i-3][j] = grid[i][j];
 				} else if (i>=3 && i<6 && j>=3 && j<6) {
-					miniGrid4 [i-3][j-3] = grid[i][j];
+					miniGrids [4][i-3][j-3] = grid[i][j];
 				} else if (i>= 3 && i<6 && j>=6 && j<9) {
-					miniGrid5 [i-3][j-6] = grid[i][j];
+					miniGrids [5][i-3][j-6] = grid[i][j];
 				} else if (i>=6 && i<9 && j<3) {
-					miniGrid6 [i-6][j] = grid[i][j];
+					miniGrids [6][i-6][j] = grid[i][j];
 				} else if (i>=6 && i<9 && j>=3 && j<6) {
-					miniGrid7 [i-6][j-3] = grid[i][j];
+					miniGrids [7][i-6][j-3] = grid[i][j];
 				} else {
-					miniGrid8 [i-6][j-6] = grid[i][j];
+					miniGrids [8][i-6][j-6] = grid[i][j];
 				}
 			}
 		}
@@ -100,87 +92,9 @@ public class Game {
 						break;
 					}
 				}
-				int Index = c/3 + 3*(r/3);
-				for (i=0; i<3; i++) {
-					for (j=0; j<3; j++) {
-						
-					}
-				}
-//				if (r<3 && r>=0 && c<3 && c>=0) {
-//					for (i=0; i<3; i++) {
-//						for (j=0; j<3; j++) {
-//							if (miniGrid1[i][j] == number) {
-//								incorrect = 1;
-//							}
-//						}
-//					}
-//				} else if (r<3 && r>=0 && c<6 && c>=3) {
-//					for (i=0; i<3; i++) {
-//						for (j=3; j<6; j++) {
-//							if (miniGrid2[i][j] == number) {
-//								incorrect = 1;
-//							}
-//						}
-//					}
-//				}else if (r<3 && r>=0 && c<9 && c>=6) {
-//					for (i=0; i<3; i++) {
-//						for (j=6; j<9; j++) {
-//							if (miniGrid3[i][j] == number) {
-//								incorrect = 1;
-//							}
-//						}
-//					}
-//				}else if (r<6 && r>=3 && c<3 && c>=0) {
-//					for (i=3; i<6; i++) {
-//						for (j=0; j<3; j++) {
-//							if (miniGrid4[i][j] == number) {
-//								incorrect = 1;
-//							}
-//						}
-//					}
-//				} else if (r<6 && r>=3 && c<6 && c>=3) {
-//					for (i=3; i<6; i++) {
-//						for (j=3; j<6; j++) {
-//							if (miniGrid5[i][j] == number) {
-//								incorrect = 1;
-//							}
-//						}
-//					}
-//				}else if (r<6 && r>=3 && c<9 && c>=6) {
-//					for (i=3; i<6; i++) {
-//						for (j=6; j<9; j++) {
-//							if (miniGrid6[i][j] == number) {
-//								incorrect = 1;
-//							}
-//						}
-//					}
-//				} else if (r<9 && r>=6 && c<3 && c>=0) {
-//					for (i=6; i<9; i++) {
-//						for (j=0; j<3; j++) {
-//							if (miniGrid7[i][j] == number) {
-//								incorrect = 1;
-//							}
-//						}
-//					}
-//				} else if (r<9 && r>=6 && c<3 && c>=0) {
-//					for (i=6; i<9; i++) {
-//						for (j=3; j<6; j++) {
-//							if (miniGrid8[i][j] == number) {
-//								incorrect = 1;
-//							}
-//						}
-//					}
-//				} else if (r<9 && r>=6 && c<3 && c>=0) {
-//					for (i=6; i<9; i++) {
-//						for (j=6; j<9; j++) {
-//							if (miniGrid9[i][j] == number) {
-//								incorrect = 1;
-//							}
-//						}
-//					}
-//				}
+				incorrect += checkMiniGrid(miniGrids, r, c, number);
 				
-				if (incorrect == 1) {
+				if (incorrect >= 1) {
 					System.out.println("Incorrect move. Try again!");
 				} else {
 					grid[r][c] = number;
@@ -207,5 +121,15 @@ public class Game {
 			System.out.println(" ");
 		}		
 	}
+	private static int checkMiniGrid(int [][][]miniGrid, int row, int col, int number) {
+		int z = col/3 + 3*(row/3);
+		for (int i=0; i<3; i++) {
+			for (int j=0; j<3; j++) {
+				if (miniGrid[z][i][j] == number) {
+					return 1;
+				}
+			}
+		}
+		return 0;
+	}
 }
-
