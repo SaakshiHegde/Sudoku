@@ -65,9 +65,9 @@ public class Game {
 					miniGrids [8][i-6][j-6] = grid[i][j];
 				}
 			}
-		}
-		
-		while (grid != answer) {
+		} 
+		boolean correct = false;
+		while (correct == false) {
 
 			printGrid(grid);
 			incorrect = 0;
@@ -102,7 +102,8 @@ public class Game {
 			} else {
 				System.out.println("Can't change this number.");
 			}
-			
+			correct = Arrays.equals(grid, answer);
+			System.out.println(correct);
 		}
 		System.out.println("You win!!");
 	}
@@ -110,12 +111,14 @@ public class Game {
 	private static void printGrid (int [][] grid) {
 		int rows = grid.length;
 		int cols = grid[0].length;
+		System.out.println("   1. 2. 3. 4. 5. 6. 7. 8. 9.");
 		for (int i = 0; i < rows; i++) {
+			System.out.print(i+1 + ". ");
 			for (int j = 0; j < cols; j++) {
 				if (grid[i][j] == 0) {
-					System.out.print("# ");
+					System.out.print("#  ");
 				} else {
-					System.out.print(grid[i][j] + " ");
+					System.out.print(grid[i][j] + "  ");
 				}
 			}
 			System.out.println(" ");
